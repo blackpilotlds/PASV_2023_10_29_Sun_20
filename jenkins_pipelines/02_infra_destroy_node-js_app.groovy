@@ -8,7 +8,7 @@ pipeline {
             steps {
                 git(
                     branch: 'main',
-                    url: 'https://github.com/blackpilotlds/PASV.git',
+                    url: 'https://github.com/blackpilotlds/PASV_2023_10_29_Sun_20.git',
                     credentialsId: 'access_to_git'
                 )
             }
