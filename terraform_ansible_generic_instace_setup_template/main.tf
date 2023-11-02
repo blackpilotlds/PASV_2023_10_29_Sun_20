@@ -12,7 +12,7 @@ terraform {
 
   required_version = ">= 1.3"
     backend "s3" {
-      bucket     = "pasv-devops-2023-10-15-sun-hw" 
+      bucket     = "pasv-devops-2023-10-29-sun-hw" 
       key        = "terraform_my_infra.tfstate" 
       region     = "us-east-1"
     }

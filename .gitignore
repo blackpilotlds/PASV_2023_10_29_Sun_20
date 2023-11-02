@@ -1,0 +1,5 @@
+.terraform*
+terraform.*
+variables.tf
+hosts.yml
+ansible_inventory.ini

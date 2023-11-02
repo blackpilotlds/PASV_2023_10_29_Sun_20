@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 sh '''
-                cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template"
+                cd ./terraform_ansible_generic_instace_setup_template
                 echo "yes" | terraform init
                 terraform plan -out=terraform.tfplan
                 '''
@@ -47,7 +47,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 sh '''
-                cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template"
+                cd ./terraform_ansible_generic_instace_setup_template
                 terraform apply terraform.tfplan
                 '''
             }
@@ -56,7 +56,7 @@ pipeline {
         stage('Get Terraform Outputs') {
             steps {
                 sh '''
-                cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template"
+                cd ./terraform_ansible_generic_instace_setup_template
                 terraform output web-address-nodejs > ./ansible/instance_ip.txt
                 '''
             }
@@ -67,7 +67,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'access_for_new_node_js_app', keyFileVariable: 'SSH_KEY')]) {
                     sh '''
                     sleep 180
-                    cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template/ansible"
+                    cd ./terraform_ansible_generic_instace_setup_template/ansible"
                     ansible-playbook -i instance_ip.txt playbook_apache.yaml -u ubuntu --private-key=$SSH_KEY -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
                     '''
                 }
