@@ -16,7 +16,7 @@ pipeline {
         stage('Terraform Initialize and Plan Destroy') {
             steps {
                 sh '''
-                cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template"
+                cd ./terraform_ansible_generic_instace_setup_template
                 terraform init
                 terraform plan -destroy -out=destroyplan.tfplan
                 '''
@@ -30,7 +30,7 @@ pipeline {
         stage('Terraform Apply Destroy') {
             steps {
                 sh '''
-                cd "./2023-10-29 Sun #20/My Own/terraform_ansible_generic_instace_setup_template"
+                cd ./terraform_ansible_generic_instace_setup_template
                 terraform apply destroyplan.tfplan
                 '''
             }

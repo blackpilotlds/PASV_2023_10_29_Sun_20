@@ -67,7 +67,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'access_for_new_node_js_app', keyFileVariable: 'SSH_KEY')]) {
                     sh '''
                     sleep 180
-                    cd ./terraform_ansible_generic_instace_setup_template/ansible"
+                    cd ./terraform_ansible_generic_instace_setup_template/ansible
                     ansible-playbook -i instance_ip.txt playbook_apache.yaml -u ubuntu --private-key=$SSH_KEY -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
                     '''
                 }
